@@ -1,0 +1,63 @@
+@PlatformService_HostAddress = https://localhost:7112
+
+###
+# @name get_all_platforms
+GET {{PlatformService_HostAddress}}/platforms/
+Accept: application/json
+
+###
+GET {{PlatformService_HostAddress}}/platforms/1
+Accept: application/json
+
+###
+# @name add_platform
+POST {{PlatformService_HostAddress}}/platforms/
+Content-Type: application/json
+
+
+{
+  "Name": "Add new platform",
+  "Publisher": "Publisher",
+  "Cost": "100 ms",
+  "Description": "Added a new platform"
+}
+
+> {%
+    client.assert(response.status == 201)
+    client.global.set("add_id", response.body.id)
+    console.log('setting value to '+ client.global.get("add_id"))
+%}
+
+###
+# @name get_platform_by_id
+GET {{PlatformService_HostAddress}}/platforms/{{add_id}}
+
+> {%
+    client.assert(response.status == 200)
+%}
+
+###
+# @name update_platform
+PUT {{PlatformService_HostAddress}}/platforms/{{add_id}}
+Content-Type: application/json
+
+{
+  "Id": {{add_id}},
+  "Name": "Updated Service",
+  "Publisher": "Publisher",
+  "Cost": "200 ms",
+  "Description": "Updated this platform"
+}
+
+> {%  
+    client.assert(response.status == 200)
+ %}
+
+###
+# @name delete_platform
+DELETE {{PlatformService_HostAddress}}/platforms/{{add_id}}
+
+> {%
+    client.assert(response.status == 204)
+%}
+
