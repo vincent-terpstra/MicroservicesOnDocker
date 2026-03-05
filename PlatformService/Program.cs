@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(); 
 builder.Services.AddDbContext<AppDbContext>(
-    opt => opt.UseInMemoryDatabase("InMemoryDb"));
+    opt => opt.UseInMemoryDatabase("InMem"));
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddControllers();
 
@@ -21,8 +21,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.InitializeDatabase();
 }
+app.InitializeDatabase();
 
 app.UseHttpsRedirection();
 app.MapControllers();

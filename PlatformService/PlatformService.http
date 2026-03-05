@@ -1,5 +1,3 @@
-@PlatformService_HostAddress = https://localhost:7112
-
 ###
 # @name get_all_platforms
 GET {{PlatformService_HostAddress}}/platforms/
