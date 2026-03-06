@@ -1,15 +1,16 @@
 ###
 # @name get_all_platforms
-GET {{PlatformService_HostAddress}}/platforms/
+GET {{PlatformService_HostAddress}}/api/platforms/
 Accept: application/json
 
 ###
-GET {{PlatformService_HostAddress}}/platforms/1
+# @name get_platform_id_1
+GET {{PlatformService_HostAddress}}/api/platforms/1
 Accept: application/json
 
 ###
 # @name add_platform
-POST {{PlatformService_HostAddress}}/platforms/
+POST {{PlatformService_HostAddress}}/api/platforms/
 Content-Type: application/json
 
 
@@ -28,7 +29,7 @@ Content-Type: application/json
 
 ###
 # @name get_platform_by_id
-GET {{PlatformService_HostAddress}}/platforms/{{add_id}}
+GET {{PlatformService_HostAddress}}/api/platforms/{{add_id}}
 
 > {%
     client.assert(response.status == 200)
@@ -36,7 +37,7 @@ GET {{PlatformService_HostAddress}}/platforms/{{add_id}}
 
 ###
 # @name update_platform
-PUT {{PlatformService_HostAddress}}/platforms/{{add_id}}
+PUT {{PlatformService_HostAddress}}/api/platforms/{{add_id}}
 Content-Type: application/json
 
 {
@@ -53,7 +54,7 @@ Content-Type: application/json
 
 ###
 # @name delete_platform
-DELETE {{PlatformService_HostAddress}}/platforms/{{add_id}}
+DELETE {{PlatformService_HostAddress}}/api/platforms/{{add_id}}
 
 > {%
     client.assert(response.status == 204)

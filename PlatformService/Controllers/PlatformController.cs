@@ -6,7 +6,7 @@ using PlatformService.Request;
 
 namespace PlatformService.Controllers;
 
-[ApiController, Route("platforms")]
+[ApiController, Route("api/platforms")]
 public class PlatformController : ControllerBase
 {
     private readonly IPlatformRepo _repository;
