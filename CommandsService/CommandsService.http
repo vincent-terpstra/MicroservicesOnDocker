@@ -1,0 +1,27 @@
+@CommandsService_HostAddress = http://localhost:8081
+
+###
+# @name get_all_commands
+GET {{CommandsService_HostAddress}}/api/commands/
+Accept: application/json
+
+> {%
+    client.assert(response.status == 201)
+%}
+
+###
+# @name get_command_id_1
+GET {{CommandsService_HostAddress}}/api/commands/1
+
+> {%
+    client.assert(response.status == 201)
+%}
+
+
+###
+# @name get_command_notfound
+GET {{CommandsService_HostAddress}}/api/commands/404
+
+> {%
+    client.assert(response.status == 404)
+%}
