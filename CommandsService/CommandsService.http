@@ -25,3 +25,15 @@ GET {{CommandsService_HostAddress}}/api/commands/404
 > {%
     client.assert(response.status == 404)
 %}
+
+###
+# @name register_platform
+POST {{CommandsService_HostAddress}}/api/platforms
+Content-Type: application/json
+
+{
+  "Name": "Add new platform",
+  "Publisher": "Publisher",
+  "Cost": "100 ms",
+  "Description": "Added a new platform"
+}

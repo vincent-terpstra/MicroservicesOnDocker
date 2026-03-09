@@ -1,6 +1,6 @@
 ﻿namespace PlatformService.Response;
 
-public class GetPlatformResponse
+public class PlatformResponse
 {
     public int Id { get; set; }
     public required string Name { get; set; }

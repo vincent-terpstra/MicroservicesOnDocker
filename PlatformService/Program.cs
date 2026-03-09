@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
 using PlatformService.Data.Interfaces;
 using PlatformService.Data.Repositories;
+using PlatformService.Services.Http;
+using PlatformService.Services.Http.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(
     opt => opt.UseInMemoryDatabase(":memory:"));
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
+builder.Services.AddHttpClient<ICommandDataClient, CommandDataHttpClient>(
+    opt => opt.BaseAddress = new Uri(builder.Configuration["CommandService"]!)
+);
 builder.Services.AddControllers();
 
 var app = builder.Build();

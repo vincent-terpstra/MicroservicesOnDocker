@@ -9,7 +9,7 @@ public static partial class PlatformMapper
 {
     [MapperIgnoreSource(nameof(Platform.Cost))]
     [MapperIgnoreSource(nameof(Platform.Description))]
-    public static partial GetPlatformResponse ToResponseModel(this Platform platform);
+    public static partial PlatformResponse ToResponseModel(this Platform platform);
     
     
     [MapperIgnoreTarget(nameof(Platform.Id))]
