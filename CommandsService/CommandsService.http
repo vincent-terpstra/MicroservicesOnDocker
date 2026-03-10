@@ -1,6 +1,3 @@
-# TODO Add K8s configuration
-@CommandsService_HostAddress = http://localhost:8081
-
 ###
 # @name get_all_commands
 GET {{CommandsService_HostAddress}}/api/commands/

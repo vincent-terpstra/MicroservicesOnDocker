@@ -30,3 +30,7 @@ docs for more detail on building and pushing.
 ```bash
   docker push $env:docker_user/platformservice
 ```
+
+```bash
+  kubectl rollout restart deployment platforms-depl
+```
