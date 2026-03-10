@@ -29,7 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 app.InitializeDatabase();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
 

@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 
 app.InitializeDatabase();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseExceptionHandlingMiddleware();
 app.MapGroup("api/commands").MapCommandRoutes();
 app.MapGroup("api/platforms").MapPlatformRoutes();

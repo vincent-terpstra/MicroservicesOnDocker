@@ -3,6 +3,10 @@
 ```
 
 ```bash
+    kubectl apply -f commands-depl.yaml
+```
+
+```bash
     kubectl get deployments
 ```
 
@@ -11,5 +15,9 @@
 ```
 
 ```bash
-    kubectl delete -f platforms-depl.yaml
+    kubectl delete -f platforms-depl.yamlls
+```
+
+```bash
+    kubectl rollout restart deployment platforms-depl
 ```
