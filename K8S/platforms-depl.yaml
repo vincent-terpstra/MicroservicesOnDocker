@@ -15,6 +15,13 @@ spec:
       containers:
         - name: platform-service
           image: douglasvincent/platformservice:latest
+          imagePullPolicy: Always
+          env:
+            - name: ConnectionStrings__PlatformsDatabase
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: ConnectionStrings__PlatformsDatabase
           
 ---
 apiVersion: v1

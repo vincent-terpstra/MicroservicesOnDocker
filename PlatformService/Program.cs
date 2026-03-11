@@ -10,9 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(); 
-builder.Services.AddDbContext<AppDbContext>(
-    opt => opt.UseInMemoryDatabase(":memory:"));
+builder.Services.AddSwaggerGen();
+builder.AddDbContext();
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddHttpClient<ICommandDataClient, CommandDataHttpClient>(
     opt => opt.BaseAddress = new Uri(builder.Configuration["CommandService"]!)
