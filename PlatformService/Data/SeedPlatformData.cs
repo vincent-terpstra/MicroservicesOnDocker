@@ -7,18 +7,10 @@ public static class SeedPlatformData
 {
     public static WebApplicationBuilder AddDbContext(this WebApplicationBuilder builder)
     {
-        if (builder.Environment.IsDevelopment())
-        {
-            builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase(":memory:"));
-        }
-        else
-        {
-            var connectionString = builder.Configuration.GetConnectionString("PlatformsDatabase");
-            builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(
-                connectionString
-            ));
-        }
-
+        var connectionString = builder.Configuration.GetConnectionString("PlatformsDatabase");
+        builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(
+            connectionString
+        ));
         return builder;
     }
 
@@ -27,12 +19,21 @@ public static class SeedPlatformData
         using var scope = app.ApplicationServices.CreateScope();
         var services = scope.ServiceProvider;
         var context = services.GetRequiredService<AppDbContext>();
+        context.Database.EnsureCreated();
+        try
+        {
+            Console.WriteLine("--> applying migrations --");
+            context.Database.Migrate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
         SeedData(context);
     }
 
     private static void SeedData(this AppDbContext context)
     {
-        context.Database.EnsureCreated();
         if (context.Platforms.Any())
             return;
 
