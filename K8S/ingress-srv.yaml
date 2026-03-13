@@ -7,8 +7,8 @@ spec:
   rules:
     - http:
         paths:
-          # Route for /api/command -> Command Service
-          - path: /api/commands
+          # Route for /api/c/ -> Command Service
+          - path: /api/c/
             pathType: Prefix
             backend:
               service:

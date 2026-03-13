@@ -23,8 +23,8 @@ app.InitializeDatabase();
 
 // app.UseHttpsRedirection();
 app.UseExceptionHandlingMiddleware();
-app.MapGroup("api/commands").MapCommandRoutes();
-app.MapGroup("api/platforms").MapPlatformRoutes();
+app.MapCommandRoutes();
+app.MapPlatformRoutes();
 
 app.Run();
 

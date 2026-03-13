@@ -1,6 +1,6 @@
 ###
 # @name get_all_commands
-GET {{CommandsService_HostAddress}}/api/commands/
+GET {{CommandsService_HostAddress}}/api/c/commands/
 Accept: application/json
 
 > {%
@@ -9,7 +9,7 @@ Accept: application/json
 
 ###
 # @name get_command_id_1
-GET {{CommandsService_HostAddress}}/api/commands/1
+GET {{CommandsService_HostAddress}}/api/c/commands/1
 
 > {%
     client.assert(response.status == 201)
@@ -18,7 +18,7 @@ GET {{CommandsService_HostAddress}}/api/commands/1
 
 ###
 # @name get_command_notfound
-GET {{CommandsService_HostAddress}}/api/commands/404
+GET {{CommandsService_HostAddress}}/api/c/commands/404
 
 > {%
     client.assert(response.status == 404)
@@ -26,12 +26,17 @@ GET {{CommandsService_HostAddress}}/api/commands/404
 
 ###
 # @name register_platform
-POST {{CommandsService_HostAddress}}/api/platforms
+POST {{CommandsService_HostAddress}}/api/c/platforms
 Content-Type: application/json
 
 {
+  "Id": 100,
   "Name": "Add new platform",
   "Publisher": "Publisher",
   "Cost": "100 ms",
   "Description": "Added a new platform"
 }
+
+###
+# @name get_all_platforms
+GET {{CommandsService_HostAddress}}/api/c/platforms
