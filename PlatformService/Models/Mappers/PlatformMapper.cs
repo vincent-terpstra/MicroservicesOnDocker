@@ -1,4 +1,5 @@
-﻿using PlatformService.Request;
+﻿using PlatformService.Events;
+using PlatformService.Request;
 using PlatformService.Response;
 using Riok.Mapperly.Abstractions;
 
@@ -16,4 +17,10 @@ public static partial class PlatformMapper
     public static partial Platform ToDomainModel(this CreatePlatformRequest platform);
     
     public static partial void Update(this UpdatePlatformRequest platform, Platform platformToUpdate);
+
+    [MapperIgnoreSource(nameof(Platform.Publisher))]
+    [MapperIgnoreSource(nameof(Platform.Cost))]
+    [MapperIgnoreSource(nameof(Platform.Description))]
+    [MapperIgnoreTarget(nameof(PlatformPublishedEvent.EventType))]
+    public static partial PlatformPublishedEvent ToPublishEvent(this Platform platform);
 }

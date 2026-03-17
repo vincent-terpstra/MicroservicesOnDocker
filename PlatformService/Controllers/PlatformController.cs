@@ -3,14 +3,14 @@ using PlatformService.Data.Interfaces;
 using PlatformService.Models;
 using PlatformService.Models.Mappers;
 using PlatformService.Request;
-using PlatformService.Services.Http.Interfaces;
+using PlatformService.Services.Interfaces;
 
 namespace PlatformService.Controllers;
 
 [ApiController, Route("api/platforms")]
 public class PlatformController(
     IPlatformRepo repository,
-    ICommandDataClient commands,
+    IPlatformPublisher commands,
     ILogger<PlatformController> logger
 ) : ControllerBase
 {
@@ -36,7 +36,7 @@ public class PlatformController(
         await repository.SaveChangesAsync();
         try
         {
-            await commands.SendToCommandServiceAsync(addPlatform.ToResponseModel());
+            await commands.PublishAsync(addPlatform.ToPublishEvent());
         }
         catch(Exception ex)
         {
@@ -62,7 +62,7 @@ public class PlatformController(
         await repository.SaveChangesAsync();
         try
         {
-            await commands.SendToCommandServiceAsync(platformToUpdate.ToResponseModel());
+            await commands.PublishAsync(platformToUpdate.ToPublishEvent());
         }
         catch (Exception ex)
         {

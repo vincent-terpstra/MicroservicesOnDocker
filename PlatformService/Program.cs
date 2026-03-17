@@ -3,7 +3,8 @@ using PlatformService.Data;
 using PlatformService.Data.Interfaces;
 using PlatformService.Data.Repositories;
 using PlatformService.Services.Http;
-using PlatformService.Services.Http.Interfaces;
+using PlatformService.Services.Interfaces;
+using PlatformService.Services.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.AddDbContext();
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
-builder.Services.AddHttpClient<ICommandDataClient, CommandDataHttpClient>(
-    opt => opt.BaseAddress = new Uri(builder.Configuration["CommandService"]!)
-);
+builder.Services.AddHttpClient<CommandDataHttpClient>(opt =>
+    opt.BaseAddress = new Uri(builder.Configuration["CommandService"]!));
+builder.Services.AddSingleton<IPlatformPublisher, MessageBusClient>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
