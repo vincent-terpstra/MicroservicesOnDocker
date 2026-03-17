@@ -1,0 +1,65 @@
+###
+# @name get_rabbitmq_vhosts
+GET {{RabbitMq_HostAddress}}/api/vhosts/
+Accept: application/json
+Authorization: Basic guest guest
+
+###
+# @name get_rabbitmq_platforms_exchange
+GET {{RabbitMq_HostAddress}}/api/exchanges/{{vhost}}/platforms
+Accept: application/json
+Authorization: Basic guest guest
+
+###
+# @name create_test_queue
+PUT {{RabbitMq_HostAddress}}/api/queues/{{vhost}}/test_queue
+Content-Type: application/json
+Authorization: Basic guest guest
+
+{
+  "auto_delete": false,
+  "durable": true
+}
+
+###
+# @name bind_test_queue_to_exchange
+POST {{RabbitMq_HostAddress}}/api/bindings/{{vhost}}/e/platforms/q/test_queue
+Content-Type: application/json
+Authorization: Basic guest guest
+
+{
+  "routing_key": ""
+}
+
+
+
+###
+# @name publish_platform_event
+POST {{RabbitMq_HostAddress}}/api/exchanges/{{vhost}}/platforms/publish
+Content-Type: application/json
+Authorization: Basic guest guest
+
+{
+  "properties": {},
+  "routing_key": "",
+  "payload": "{\"Id\": 1, \"Name\": \"New Kubernetes Platform\", \"EventType\": \"Platform_Published\"}",
+  "payload_encoding": "string"
+}
+
+###
+# @name peek_messages_test_queue
+POST {{RabbitMq_HostAddress}}/api/queues/{{vhost}}/test_queue/get
+Content-Type: application/json
+Authorization: Basic guest guest
+
+{
+  "count": 5,
+  "ackmode": "ack_requeue_true",
+  "encoding": "auto",
+  "truncate": 50000
+}
+
+###
+# @name delete_test_queue
+DELETE {{RabbitMq_HostAddress}}/api/queues/{{vhost}}/test_queue
+Authorization: Basic guest guest
