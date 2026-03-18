@@ -33,6 +33,7 @@ public class MessageBusClient : IPlatformPublisher, IAsyncDisposable
     public async Task PublishAsync(PlatformPublishedEvent platform)
     {
         await InitializeAsync();
+        platform.EventType = "PlatformPublished";
         var message = JsonSerializer.Serialize(platform);
         if (_connection.IsOpen)
         {

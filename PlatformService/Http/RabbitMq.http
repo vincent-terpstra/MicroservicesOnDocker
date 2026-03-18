@@ -42,7 +42,7 @@ Authorization: Basic guest guest
 {
   "properties": {},
   "routing_key": "",
-  "payload": "{\"Id\": 1, \"Name\": \"New Kubernetes Platform\", \"EventType\": \"Platform_Published\"}",
+  "payload": "{\"Id\": 1, \"Name\": \"New Kubernetes Platform\", \"EventType\": \"PlatformPublished\"}",
   "payload_encoding": "string"
 }
 
