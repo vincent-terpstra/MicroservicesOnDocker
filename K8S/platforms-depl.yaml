@@ -37,3 +37,7 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8080
+    - name: platform-grpc
+      protocol: TCP
+      port: 680
+      targetPort: 680

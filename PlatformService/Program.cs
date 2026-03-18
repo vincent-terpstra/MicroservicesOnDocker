@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
 using PlatformService.Data.Interfaces;
 using PlatformService.Data.Repositories;
+using PlatformService.Services.Grpc;
 using PlatformService.Services.Http;
 using PlatformService.Services.Interfaces;
 using PlatformService.Services.MessageBus;
@@ -12,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
 builder.AddDbContext();
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddHttpClient<CommandDataHttpClient>(opt =>
@@ -29,7 +32,12 @@ if (app.Environment.IsDevelopment())
 }
 app.InitializeDatabase();
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.MapControllers();
+app.MapGrpcService<GrpcPlatformService>();
+app.MapGrpcReflectionService();
+app.MapGet("/protos/platforms.proto", 
+    async context => await context.Response.WriteAsync(System.IO.File.ReadAllText("Protos/platforms.proto"))
+);
 app.Run();
 

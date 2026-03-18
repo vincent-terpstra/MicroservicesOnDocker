@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.76.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
@@ -19,6 +21,10 @@
     <PackageReference Include="RabbitMQ.Client" Version="7.2.1" />
     <PackageReference Include="Riok.Mapperly" Version="5.0.0-next.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Protobuf Include="Protos\platforms.proto" GrpcServices="Server"/>
   </ItemGroup>
 
 </Project>

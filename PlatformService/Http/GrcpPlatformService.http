@@ -1,0 +1,6 @@
+﻿@timeout = 5000ms
+###
+GRPC localhost:5001/GrpcPlatform/GetAllPlatforms
+
+###
+GET https://localhost:5001/protos/platforms.proto
