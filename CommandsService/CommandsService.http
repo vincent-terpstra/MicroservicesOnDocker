@@ -4,7 +4,7 @@ GET {{CommandsService_HostAddress}}/api/c/commands/
 Accept: application/json
 
 > {%
-    client.assert(response.status == 201)
+    client.assert(response.status == 200)
 %}
 
 ###
@@ -12,7 +12,7 @@ Accept: application/json
 GET {{CommandsService_HostAddress}}/api/c/commands/1
 
 > {%
-    client.assert(response.status == 201)
+    client.assert(response.status == 200)
 %}
 
 
