@@ -5,9 +5,9 @@ namespace CommandsService.Events;
 public class PlatformPublishedEvent
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-    
-    public string EventType { get; set; }
+    public string Name { get; set; } = string.Empty;
+
+    public string EventType { get; set; } = string.Empty;
 }
 
 public static class PlatformPublishedEventExtensions

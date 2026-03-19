@@ -9,8 +9,8 @@ public class MessageBusSubscriber: BackgroundService, IAsyncDisposable
 {
     private readonly IConfiguration _configuration;
     private readonly IEventProcessor _processor;
-    private IConnection _connection;
-    private IChannel _channel;
+    private IConnection _connection = null!;
+    private IChannel _channel = null!;
 
     public MessageBusSubscriber(IConfiguration configuration, IEventProcessor processor)
     {

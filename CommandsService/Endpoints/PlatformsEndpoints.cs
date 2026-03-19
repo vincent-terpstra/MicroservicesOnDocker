@@ -1,5 +1,6 @@
 ﻿using CommandsService.Data;
 using CommandsService.Models;
+using CommandsService.Services.Grpc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommandsService.Endpoints;
@@ -25,6 +26,6 @@ public static class PlatformsEndpoints
         return Results.Created("api/c/platforms", platform);
     }
 
-    private static Task<List<Platform>> GetAllPlatformsAsync(CommandsDbContext dbContext, CancellationToken ct)
-        => dbContext.Platforms.ToListAsync(ct);
+    private static Task<IEnumerable<Platform>> GetAllPlatformsAsync(IPlatformDataClient client, CancellationToken ct)
+        => client.GetPlatformsAsync();
 }

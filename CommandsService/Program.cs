@@ -5,6 +5,7 @@ using CommandsService.Events;
 using CommandsService.Interfaces;
 using CommandsService.Middleware;
 using CommandsService.Services;
+using CommandsService.Services.Grpc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<CommandsDbContext>(
     opt => opt.UseInMemoryDatabase(":memory:"));
 builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
 builder.Services.AddScoped<IEventHandler<PlatformPublishedEvent>, PlatformPublishedEventHandler>();
+builder.Services.AddScoped<IPlatformDataClient, PlatformDataClient>();
 builder.Services.AddHostedService<MessageBusSubscriber>();
 var app = builder.Build();
 
