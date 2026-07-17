@@ -24,17 +24,14 @@ It can be used as a reference for:
 ## Project Structure
 ```text
 ├── README.md 
-├── src/ 
+├── CommandsService/ 
+│ └── <application-source-files>
+├── PlatformsService/ 
 │ └── <application-source-files> 
 ├── k8s/ 
 │ ├── <application-manifests> 
 │ ├── <database-manifests> 
 │ └── <storage-manifests> 
-├── docs/ 
-│ └── <project-documentation> 
-├── scripts/ 
-│ └── <helper-scripts> 
-└── .gitignore
 ```
 
 ## Directory Guide
