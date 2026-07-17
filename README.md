@@ -67,48 +67,11 @@ This directory may include manifests for:
 
 Sensitive values should not be committed directly. Use placeholder values or secret management where appropriate.
 
-### `docs/`
-
-Contains supporting documentation for the project.
-
-This directory can be used for:
-
-- Architecture notes
-- Course notes
-- Screenshots
-- Design decisions
-- Diagrams
-- Additional setup references
-
-### `scripts/`
-
-Contains helper scripts related to development, maintenance, or demonstrations.
-
-Examples include:
-
-- Build helpers
-- Cleanup helpers
-- Formatting utilities
-- Local development helpers
-
-Scripts should be documented clearly before use.
-
-## Suggested Documentation Additions
-
-To make this demo project more complete, consider adding:
-
-- A short architecture diagram
-- Screenshots of the running application
-- Notes from the original course
-- A list of technologies used
-- A brief explanation of the database design
-- A summary of Kubernetes resources included in the project
-
 ## Technologies
 
 This project may include or reference the following technologies:
 
-- Application framework: `<application-framework>`
+- Application framework: .NET ASP
 - Database: Microsoft SQL Server
 - Containerization: Docker
 - Orchestration: Kubernetes
