@@ -64,17 +64,16 @@ This directory may include manifests for:
 
 Sensitive values should not be committed directly. Use placeholder values or secret management where appropriate.
 
-## Technologies
+### YAML File Guide
 
-This project may include or reference the following technologies:
-
-- Application framework: .NET ASP
-- Database: Microsoft SQL Server
-- Containerization: Docker
-- Orchestration: Kubernetes
-- Deployment assets: Kubernetes YAML manifests
-
-Update this section as the project evolves.
+| File | Purpose |
+| --- | --- |
+| `platforms-depl.yaml` | Defines the Platform Service deployment and its internal Kubernetes service. This is the main service responsible for platform-related API functionality. |
+| `commands-depl.yaml` | Defines the Command Service deployment and its internal Kubernetes service. This service handles command-related API functionality. |
+| `ingress-srv.yaml` | Defines the ingress gateway rules used to route external HTTP traffic to the appropriate internal services. |
+| `mssql-plat-depl.yaml` | Defines the Microsoft SQL Server deployment and its related Kubernetes service for database access inside the cluster. |
+| `local-pvc.yaml` | Defines the persistent volume claim used to provide storage for the SQL Server database data. |
+| `rabbitmq-depl.yaml` | Defines the RabbitMQ deployment and related Kubernetes services used for message-based communication between services. |
 
 ## Repository Notes
 
