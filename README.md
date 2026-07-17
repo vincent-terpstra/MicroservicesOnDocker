@@ -6,8 +6,8 @@ This repository contains a demo application organized as a learning-friendly ref
 
 This project was created while following an original YouTube course.
 
-> Original course: `[.Net Microservices - full course](https://www.youtube.com/watch?v=DgVjEo3OGBI)`  
-> Course author/channel: `[Les Jackson](https://www.youtube.com/@binarythistle)`  
+> Original course: [.Net Microservices - full course](https://www.youtube.com/watch?v=DgVjEo3OGBI)  
+> Course author/channel: [Les Jackson](https://www.youtube.com/@binarythistle)
 
 ## Project Purpose
 
@@ -133,8 +133,8 @@ Before using this structure in a production environment, consider adding:
 
 This project is based on concepts and exercises from the following YouTube course:
 
-- `.NET Microservices` by `[Les Jackson](https://www.youtube.com/@binarythistle)`
-- `[.NET Microservices](https://www.youtube.com/watch?v=DgVjEo3OGBI)`
+- *.NET Microservices* by [Les Jackson](https://www.youtube.com/@binarythistle)
+- [.NET Microservices](https://www.youtube.com/watch?v=DgVjEo3OGBI)
 
 Additional modifications, notes, and structure may have been added for demonstration and learning purposes.
 
