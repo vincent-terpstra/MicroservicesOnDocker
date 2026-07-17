@@ -22,6 +22,7 @@ It can be used as a reference for:
 - Demonstrating a simple app-plus-database structure
 
 ## Project Structure
+```text
 ├── README.md 
 ├── src/ 
 │ └── <application-source-files> 
@@ -34,6 +35,7 @@ It can be used as a reference for:
 ├── scripts/ 
 │ └── <helper-scripts> 
 └── .gitignore
+```
 
 ## Directory Guide
 
