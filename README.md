@@ -1,4 +1,4 @@
-# Demo App Project Structure
+# Microservices On Docker
 
 This repository contains a demo application organized as a learning-friendly reference project. It is intended to demonstrate how an application can be structured alongside supporting infrastructure resources such as Kubernetes manifests and database persistence configuration.
 
